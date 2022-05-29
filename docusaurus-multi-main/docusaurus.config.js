@@ -6,26 +6,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'nasirahamed.com',
-  tagline: 'writing in my spare time',
-  url: 'https://nasirahamed.com',
+  title: 'My Site',
+  tagline: 'Dinosaurs are cool',
+  url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'nasirahamedcom', // Usually your GitHub org/user name.
-  projectName: 'web', // Usually your repo name.
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+  organizationName: 'facebook', // Usually your GitHub org/user name.
+  projectName: 'docusaurus', // Usually your repo name.
 
   presets: [
     [
@@ -33,17 +22,15 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          // id: 'docs', // omitted => default instance
+          routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
-          // routeBasePath: '/',
           // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
@@ -54,47 +41,46 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'demo',
+        path: 'demo',
+        routeBasePath: 'demo',
+        sidebarPath: require.resolve('./sidebarsDemo.js'),
+        // ... other options
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'nasirahamed.com',
+        title: 'My Site',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
         },
         items: [
-          //{
-          //  type: 'doc',
-          //  docId: 'intro',
-          //  position: 'left',
-          //  label: 'Learning',
-          //},
           {
-            type: 'docSidebar',  // docSidebar
+            type: 'doc',
             position: 'left',
-            sidebarId: 'html', // foldername
-            label: 'HTML',     // navbar title
+            docId: 'intro',
+            label: 'Docs',
           },
           {
-            type: 'docSidebar',  // docSidebar
+            to: '/demo/intro',   // To highlight the navbar item, you must link to a document, not a top-level directory
             position: 'left',
-            sidebarId: 'css', // foldername
-            label: 'CSS',     // navbar title
+            label: 'Demo',
+            activeBaseRegex: `/demo/`,
           },
           {
-            type: 'docSidebar',  // docSidebar
-            position: 'left',
-            sidebarId: 'js', // foldername
-            label: 'JS',     // navbar title
+            to: '/blog',
+            label: 'Blog',
+            position: 'left'
           },
-          {
-            type: 'docSidebar',  // docSidebar
-            position: 'left',
-            sidebarId: 'osx', // foldername
-            label: 'OSX',     // navbar title
-          },
-          //{to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
@@ -106,16 +92,16 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Documentation',
+            title: 'Docs',
             items: [
               {
-                label: 'Learning',
-                to: '/docs/intro',
+               label: 'Tutorial',
+               to: '/docs/intro',
               },
             ],
           },
           {
-            title: 'ABAI Community',
+            title: 'Community',
             items: [
               {
                 label: 'Stack Overflow',
